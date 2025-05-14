@@ -1,5 +1,4 @@
-{
-    "id": "1",
-    "name": "Sneakers",
-    "description": "Men outfits!"
+{ "id": 1, 
+"name": "Item 1", 
+"description": "This is item 1" 
 }
