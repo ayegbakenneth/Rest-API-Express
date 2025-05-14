@@ -7,7 +7,7 @@ app.use(express.json());
 
 app.get('/', (req, res) => {
     if (!'/') {
-        res.status(404).send('Page not found!');
+        res.status(500).send('Server error!');
     }
     res.send('Hello World!');
 })

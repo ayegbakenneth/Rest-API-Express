@@ -1,47 +1,16 @@
 import express from 'express';
+import { getItems, foundItem, createItem, updateItem, deleteItem } from '../controllers/users.js';
 
 const router = express.Router();
 
-const items = []
+router.get('/', getItems);
+router.get('/:id', foundItem);
 
-router.get('/', (req, res) => {
-    res.send(items);
-});
+router.post('/', createItem);
 
-router.get('/:id', (req, res) => {
-    const id = req.params;
-    const foundItem = items.find((item) => item.id === id);
-    res.send(foundItem);
-})
+router.put('/:id', updateItem);
 
-router.post('/', (req, res) =>{
-    const item = req.body;
-    items.push(item);
-    res.send(`Item with ${item.name} uploaded successfully.`)
-});
-
-router.put('/:id', (req, res) => {
-    const { idItem } = req.params;
-    const { id, name, description } = req.body;
-    const item = items.find((item) = item.id === idItem);
-    if (id) {
-        item.id = id;
-    }
-    if (name) {
-        item.name = name;
-    }
-    if (description) {
-        item.description = description;
-    }
-});
-
-router.delete('/:id', (req, res) => {
-    const { id } = req.params;
-    const deleteItem = items.filter((item) => {
-        item.id !== id;
-        res.send(deleteItem);
-    })
-})
+router.delete('/:id', deleteItem);
 
 export default router;
 
